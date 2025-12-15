@@ -27,17 +27,14 @@ const heart = document.getElementById("heart");
 const text = document.getElementById("text");
 const music = document.getElementById("music");
 
-let started = false;
+// Música se reproduce al abrir el sitio
+window.addEventListener("load", () => {
+  music.play().catch(() => {});
+});
 
 heart.addEventListener("click", () => {
   const frase = frases[Math.floor(Math.random() * frases.length)];
   text.textContent = `${nombre}, ${frase}`;
-
-  // Música (solo inicia una vez)
-  if (!started) {
-    music.play().catch(() => {});
-    started = true;
-  }
 
   // Corazones flotantes
   const floating = document.createElement("div");
